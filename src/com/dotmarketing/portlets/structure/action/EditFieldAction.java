@@ -246,7 +246,7 @@ public class EditFieldAction extends DotPortletAction {
                 		String values = fieldForm.getValues();
 	                  String temp = values.replaceAll("\r\n","|");
         	            String[] tempVals = StringUtil.split(temp.trim(), "|");
-	                  for(int i=0;i<tempVals.length;i++){
+	                  for(int i=1;i<tempVals.length;i=i+2){
         	        	  try {
 					Float.parseFloat(tempVals[i]);
 				  }catch (Exception e) {
