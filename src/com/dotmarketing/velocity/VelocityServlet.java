@@ -37,6 +37,7 @@ import org.apache.velocity.exception.ParseErrorException;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.tools.view.context.ChainedContext;
+import org.python.modules.synchronize;
 
 import com.dotcms.enterprise.LicenseUtil;
 import com.dotmarketing.beans.Host;
@@ -1128,6 +1129,10 @@ public abstract class VelocityServlet extends HttpServlet {
 
 		return sb.toString();
 
+	}
+
+	public static synchronized void createThreadLocal() {
+		velocityCtx = new ThreadLocal<Context>();
 	}
 
 }

@@ -245,7 +245,7 @@ public class Logger{
     private static void velocityLogError(Class cl){
 
     	if(VelocityServlet.velocityCtx == null) {
-    		VelocityServlet.velocityCtx = new ThreadLocal<Context>();
+    		VelocityServlet.createThreadLocal();
     	}
 
     	if(VelocityServlet.velocityCtx.get() != null){
