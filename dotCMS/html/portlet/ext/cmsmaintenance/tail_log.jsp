@@ -93,6 +93,19 @@
 
 <script>
 
+require(["dojo/ready", "dojo/parser", "dijit/registry", "dijit/Dialog"], function(ready, parser, registry){
+    ready(80, function(){
+		if(self != top){
+			dojo.style(dojo.byId("popMeUp"), "display", "block");
+		}
+
+		<%if(request.getParameter("fileName")!= null){%>
+			dijit.byId("fileName").setValue("<%=UtilMethods.xmlEscape(request.getParameter("fileName"))%>");
+		<%}%>
+    });
+});
+
+
 	function reloadTail(){
 		var x = dijit.byId("fileName").getValue();
 		dojo.byId("tailingFrame").src='/dotTailLogServlet/?fileName='+x;
@@ -105,19 +118,6 @@
 			var newwin = window.open("/html/portlet/ext/cmsmaintenance/tail_log.jsp?fileName=" + x, "tailwin", "status=1,toolbars=1,resizable=1,scrollbars=1,height=600,width=800");
 			newwin.focus();
 	}
-
-	dojo.ready(function(){
-
-		if(self != top){
-			dojo.style(dojo.byId("popMeUp"), "display", "block");
-		}
-
-
-		<%if(request.getParameter("fileName")!= null){%>
-			dijit.byId("fileName").setValue("<%=UtilMethods.xmlEscape(request.getParameter("fileName"))%>");
-		<%}%>
-
-	});
 
 	function doManageLogs() {
 
@@ -291,4 +291,11 @@
 		</div>
 
    </div>
+
+   <script>
+
+   require(["dojo/parser"], function(parser){
+  	parser.parse();
+	});
+   </script>
 
